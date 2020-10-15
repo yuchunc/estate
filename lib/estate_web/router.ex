@@ -16,7 +16,7 @@ defmodule EstateWeb.Router do
   scope "/", EstateWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", PageController, :landing
   end
 
   # Other scopes may use custom stacks.

@@ -12,4 +12,5 @@ import "../css/app.scss"
 //     import {Socket} from "phoenix"
 //     import socket from "./socket"
 //
+import 'alpinejs'
 import "phoenix_html"

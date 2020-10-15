@@ -1,7 +1,9 @@
 defmodule EstateWeb.PageController do
   use EstateWeb, :controller
 
-  def index(conn, _params) do
-    render(conn, "index.html")
+  plug :put_layout, "marketing.html"
+
+  def landing(conn, _params) do
+    render(conn, "landing.html")
   end
 end
