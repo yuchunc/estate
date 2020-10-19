@@ -3,7 +3,7 @@ defmodule EstateWeb.PageController do
 
   plug :put_layout, "marketing.html"
 
-  def landing(conn, _params) do
-    render(conn, "landing.html")
+  def app_landing(conn, _params) do
+    render(conn, "app_landing.html")
   end
 end
