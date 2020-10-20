@@ -1,6 +1,7 @@
 defmodule Estate.Account.User do
-  use Ecto.Schema
-  import Ecto.Changeset
+  use Estate, :schema
+
+  alias Estate.Account
 
   @derive {Inspect, except: [:password]}
   @primary_key {:id, :binary_id, autogenerate: true}
@@ -10,6 +11,9 @@ defmodule Estate.Account.User do
     field :password, :string, virtual: true
     field :hashed_password, :string
     field :confirmed_at, :naive_datetime
+    field :taiwan_id, :string
+
+    embeds_one :profile, Account.Profile
 
     timestamps()
   end

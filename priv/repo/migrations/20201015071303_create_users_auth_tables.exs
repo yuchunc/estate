@@ -9,6 +9,8 @@ defmodule Estate.Repo.Migrations.CreateUsersAuthTables do
       add :email, :citext, null: false
       add :hashed_password, :string, null: false
       add :confirmed_at, :naive_datetime
+      add :taiwan_id, :string
+      add :profile, :map
       timestamps()
     end
 
