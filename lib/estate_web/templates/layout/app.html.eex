@@ -13,7 +13,7 @@
       Tailwind UI components require Tailwind CSS v1.8 and the @tailwindcss/ui plugin.
       Read the documentation to get started: https://tailwindui.com/documentation
     -->
-    <div class="h-screen flex overflow-hidden bg-cool-gray-100" x-data="{ mobileNav: false, profileMenu: false }" @keydown.window.escape="sidebarOpen = false">
+    <div class="h-screen flex overflow-hidden bg-cool-gray-100" x-data="{ mobileNav: true, profileMenu: false }" @keydown.window.escape="sidebarOpen = false">
       <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
       <div class="lg:hidden" x-show="mobileNav">
         <div class="fixed inset-0 flex z-40">
@@ -70,23 +70,21 @@
             </div>
             <div class="mt-5 overflow-y-auto">
               <nav class="px-2 space-y-1">
-                <a href="#" class="group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-white bg-teal-700 focus:outline-none focus:bg-teal-500 transition ease-in-out duration-150">
-                  <!-- Heroicon name: home -->
+                <a href="<%= Routes.dashboard_path(@conn, :show) %>" class="<%= controller_module(@conn) |> sidenav_item_color(EstateWeb.DashboardController) %>">
+                  <svg class="mr-4 h-6 w-6 text-teal-200 transition ease-in-out duration-150" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                  </svg>
+                  Dashboard
+                </a>
+
+                <a href="<%= Routes.user_post_path(@conn, :index) %>" class="<%= controller_module(@conn) |> sidenav_item_color(EstateWeb.User.PostController) %>">
                   <svg class="mr-4 h-6 w-6 text-teal-200 transition ease-in-out duration-150" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                   </svg>
-                  Home
+                  Posting
                 </a>
 
                 <% if false do %>
-                  <a href="#" class="group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-teal-100 hover:text-white hover:bg-teal-500 focus:outline-none focus:bg-teal-500 transition ease-in-out duration-150">
-                    <!-- Heroicon name: clock -->
-                    <svg class="mr-4 h-6 w-6 text-teal-200 transition ease-in-out duration-150" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    History
-                  </a>
-
                   <a href="#" class="group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-teal-100 hover:text-white hover:bg-teal-500 focus:outline-none focus:bg-teal-500 transition ease-in-out duration-150">
                     <!-- Heroicon name: scale -->
                     <svg class="mr-4 h-6 w-6 text-teal-200 transition ease-in-out duration-150" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -169,10 +167,12 @@
               <div class="overflow-y-auto">
                 <nav class="px-2 space-y-1">
                   <a href="#" class="group flex items-center px-2 py-2 text-sm leading-6 font-medium rounded-md text-white bg-teal-700 focus:outline-none focus:bg-teal-500 transition ease-in-out duration-150">
-                    <!-- Heroicon name: home -->
-                    <svg class="mr-4 h-6 w-6 text-teal-200 group-hover:text-teal-200 group-focus:text-teal-200 transition ease-in-out duration-150" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                    </svg>
+                    <%= if false do %>
+                      <!-- Heroicon name: home -->
+                      <svg class="mr-4 h-6 w-6 text-teal-200 group-hover:text-teal-200 group-focus:text-teal-200 transition ease-in-out duration-150" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                      </svg>
+                    <% end %>
                     Home
                   </a>
 
@@ -263,17 +263,19 @@
           <!-- Search bar -->
           <div class="flex-1 px-4 flex justify-between sm:px-6 lg:max-w-6xl lg:mx-auto lg:px-8">
             <div class="flex-1 flex">
-              <form class="w-full flex md:ml-0" action="#" method="GET">
-                <label for="search_field" class="sr-only">Search</label>
-                <div class="relative w-full text-cool-gray-400 focus-within:text-cool-gray-600">
-                  <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none">
-                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" />
-                    </svg>
+              <%= if false do %>
+                <form class="w-full flex md:ml-0" action="#" method="GET">
+                  <label for="search_field" class="sr-only">Search</label>
+                  <div class="relative w-full text-cool-gray-400 focus-within:text-cool-gray-600">
+                    <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none">
+                      <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" />
+                      </svg>
+                    </div>
+                    <input id="search_field" class="block w-full h-full pl-8 pr-3 py-2 rounded-md text-cool-gray-900 placeholder-cool-gray-500 focus:outline-none focus:placeholder-cool-gray-400 sm:text-sm" placeholder="Search" type="search">
                   </div>
-                  <input id="search_field" class="block w-full h-full pl-8 pr-3 py-2 rounded-md text-cool-gray-900 placeholder-cool-gray-500 focus:outline-none focus:placeholder-cool-gray-400 sm:text-sm" placeholder="Search" type="search">
-                </div>
-              </form>
+                </form>
+              <% end %>
             </div>
             <div class="ml-4 flex items-center md:ml-6">
               <button class="p-1 text-cool-gray-400 rounded-full hover:bg-cool-gray-100 hover:text-cool-gray-500 focus:outline-none focus:shadow-outline focus:text-cool-gray-500" aria-label="Notifications">
