@@ -1,6 +1,5 @@
 defmodule Estate.Post do
-  use Ecto.Schema
-  import Ecto.Changeset
+  use Estate, :schema
 
   schema "posts" do
     field :city, :string
