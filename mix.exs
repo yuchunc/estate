@@ -46,6 +46,7 @@ defmodule Estate.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
+      {:ecto_enum, "~> 1.4"},
       {:phx_gen_auth, "~> 0.5", only: [:dev], runtime: false}
     ]
   end

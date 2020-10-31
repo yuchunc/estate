@@ -1,6 +1,6 @@
 <div class="mt-8">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="text-lg leading-6 font-medium text-gray-900">Current Posting</h2>
+    <h2 class="text-lg leading-6 font-medium text-gray-900">目前需求</h2>
     <div class="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
 
       <!-- Cards -->
@@ -35,6 +35,7 @@
 
       <!-- More cards... -->
     </div>
-  </div>
 
+    <h2 class="text-lg leading-6 font-medium text-gray-900">過往需求</h2>
+  </div>
 </div>
