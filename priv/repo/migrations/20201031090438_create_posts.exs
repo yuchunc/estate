@@ -13,6 +13,5 @@ defmodule Estate.Repo.Migrations.CreatePosts do
 
       timestamps()
     end
-
   end
 end

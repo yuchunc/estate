@@ -1,3 +1,3 @@
 import EctoEnum
 
-defenum HouseTypeEnum, ["appartment", "studio", "house", "land"]
+defenum(HouseTypeEnum, ["appartment", "studio", "house", "land"])
