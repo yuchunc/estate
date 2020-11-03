@@ -4,9 +4,10 @@ defmodule Estate.Post do
   schema "posts" do
     field :city, :string
     field :area, :string
-    field :bid, :integer
+    field :budget, :integer
     field :house_type, HouseTypeEnum
-    field :size, :integer
+    field :min_size, :integer
+    field :max_size, :integer
     field :room_count, :integer
 
     timestamps()
