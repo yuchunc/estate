@@ -7,6 +7,7 @@ defmodule Estate.Application do
 
   def start(_type, _args) do
     children = [
+      Estate.PreloadData,
       # Start the Ecto repository
       Estate.Repo,
       # Start the Telemetry supervisor
