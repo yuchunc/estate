@@ -10,7 +10,7 @@ defmodule Estate.PreloadData do
       |> Jason.decode!()
 
     counties =
-      Enum.map(raw_counties, &%{eng_city_name: &1["CityEngName"], city_name: &1["CityName"]})
+      Enum.map(raw_counties, &%{eng_county_name: &1["CityEngName"], county_name: &1["CityName"]})
 
     Registry.register(__MODULE__, :raw_counties, raw_counties)
     Registry.register(__MODULE__, :counties, counties)

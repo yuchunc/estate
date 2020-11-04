@@ -14,6 +14,10 @@ defmodule Estate.Post do
   end
 
   @doc false
+  def changeset do
+    change(%__MODULE__{})
+  end
+
   def changeset(post, attrs) do
     post
     |> cast(attrs, [])
