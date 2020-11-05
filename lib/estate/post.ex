@@ -13,6 +13,10 @@ defmodule Estate.Post do
     field :room_count, :integer
     embeds_one :options, Post.Options
 
+    field :published_at, :naive_datetime
+    field :expired_at, :naive_datetime
+    field :archived_at, :naive_datetime
+
     belongs_to :user, Estate.Account.User, type: :binary_id
 
     timestamps()

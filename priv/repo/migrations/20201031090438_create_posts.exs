@@ -11,6 +11,9 @@ defmodule Estate.Repo.Migrations.CreatePosts do
       add :max_size, :integer
       add :room_count, :integer
       add :options, :map
+      add :published_at, :utc_datetime
+      add :expired_at, :utc_datetime
+      add :archived_at, :utc_datetime
 
       add :user_id, references("users", type: :uuid)
 
