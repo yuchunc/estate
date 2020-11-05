@@ -10,6 +10,8 @@ defmodule Estate do
   def schema do
     quote do
       use Ecto.Schema
+
+      import Ecto.Query
       import Ecto.Changeset
     end
   end

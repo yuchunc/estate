@@ -12,6 +12,8 @@ defmodule Estate.Repo.Migrations.CreatePosts do
       add :room_count, :integer
       add :options, :map
 
+      add :user_id, references("users", type: :uuid)
+
       timestamps()
     end
   end
