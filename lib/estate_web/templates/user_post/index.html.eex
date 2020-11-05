@@ -17,7 +17,7 @@
 
       <% #require IEx; IEx.pry %>
 
-      <%= render_many @posts, __MODULE__, "index_item.html" %>
+      <%= render_many @posts, __MODULE__, "index_item.html", as: :post %>
 
       <!-- More cards... -->
     </div>

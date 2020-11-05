@@ -20,10 +20,8 @@ defmodule Estate.PreloadData do
 
   def counties do
     [{_, counties}] = Registry.lookup(__MODULE__, :counties)
-    counties |> Enum.map(& &1[:county_name])
-  end
-
-  def house_types do
-    ["公寓／大廈": "appartment", 套房: "studio", 透天: "house", 建地: "land"]
+    counties
+    |> Enum.map(& &1[:county_name])
+    |> List.delete("釣魚臺")
   end
 end

@@ -9,6 +9,7 @@ defmodule EstateWeb.UserPostController do
     posts =
       Post
       |> Post.by_user_query(user)
+      |> Post.published_query(NaiveDateTime.utc_now)
       |> Repo.all()
 
     render(conn, "index.html", posts: posts)
@@ -18,7 +19,15 @@ defmodule EstateWeb.UserPostController do
     render(conn, "new.html", changeset: Estate.Post.changeset())
   end
 
-  def create(conn, params) do
-    render(conn, "index.html")
+  def create(conn, %{"post" => post_params }) do
+    user = current_user(conn)
+
+    chgst = %Post{user_id: user.id, published_at: NaiveDateTime.utc_now}
+    |> Post.creation_changeset(post_params)
+
+    case Repo.insert(chgst) do
+      {:ok, _} -> redirect(conn, to: Routes.user_post_path(conn, :index))
+      {:error, chgst} -> render(conn, "new.html", changeset: chgst)
+    end
   end
 end

@@ -2,27 +2,34 @@
   <div class="p-5">
     <div class="flex justify-between">
       <div class="text-lg text-gray-900">
-        木柵
-        <span class="text-sm">台北</span>
+        <%= @post.area %>
+        <span class="text-sm"> <%= @post.county %></span>
       </div>
-      <div class="text-red-400">
-        <!-- show when there is a notice on the post -->
-        <svg class="w-5 h-5 inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
-        </svg>
-        <span class="inline-flex justify-center min-w-5 pl-1 rounded-md leading-5">
-          2
-        </span>
-      </div>
+      <% if false do %>
+        <div class="text-red-400">
+          <!-- show when there is a notice on the post -->
+          <svg class="w-5 h-5 inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+          </svg>
+          <span class="inline-flex justify-center min-w-5 pl-1 rounded-md leading-5">
+            2
+          </span>
+        </div>
+      <% end %>
     </div>
     <div class="flex items-center mt-2 leading-4 justify-between">
       <div>
-        <div> 公寓 </div>
-        <div> 35+ 坪 </div>
-        <div> 三房 </div>
+        <div> <%= Keyword.get(Utils.house_types, @post.house_type) %> </div>
+        <div>
+          <%= @post.min_size %>
+          ～
+          <%= @post.max_size %>
+          坪
+        </div>
+        <div> <%= @post.room_count %> 房 </div>
       </div>
       <div>
-        <div> $30,659.45 </div>
+        <div> NT$ <%= Utils.integer_to_curreny(@post.budget) %> </div>
       </div>
     </div>
   </div>
