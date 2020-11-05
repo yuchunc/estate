@@ -23,7 +23,12 @@ defmodule EstateWeb do
 
       import Plug.Conn
       import EstateWeb.Gettext
+
+      alias Estate.Repo
       alias EstateWeb.Router.Helpers, as: Routes
+
+      def current_user(%{assigns: %{current_user: current_user}}), do: current_user
+      def current_user(_), do: nil
     end
   end
 

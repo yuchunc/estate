@@ -10,15 +10,13 @@
       <%= form_for @changeset, Routes.user_post_path(@conn, @action), fn f -> %>
         <div class="grid grid-cols-6 gap-6">
           <div class="col-span-6 sm:col-span-3">
-            <label for="city" class="block text-sm font-medium leading-5 text-gray-700">市／縣</label>
-            <select id="city" class="mt-1 block form-select w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5">
-              <%= [nil | PreloadData.counties |> Enum.map(& &1[:county_name])] |> options_for_select(nil) %>
-            </select>
+            <label for="county" class="block text-sm font-medium leading-5 text-gray-700">市／縣</label>
+            <%= select f, :county, PreloadData.counties, prompt: "縣／市", required: true, class: "mt-1 block form-select w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
           </div>
 
           <div class="col-span-6 sm:col-span-3">
             <label for="area" class="block text-sm font-medium leading-5 text-gray-700">區域</label>
-            <input id="area" class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+            <%= text_input f, :area, required: true, class: "mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
           </div>
 
           <div class="col-span-6 sm:col-span-4">
@@ -29,56 +27,52 @@
                   NTD $
                 </span>
               </div>
-              <input id="budget" class="form-input block w-full pl-12 pr-12 focus:outline-none sm:text-sm sm:leading-5" placeholder="0.00">
+              <%= number_input f, :budget, class: "form-input block w-full pl-12 pr-12 focus:outline-none sm:text-sm sm:leading-5", required: true %>
             </div>
           </div>
 
           <div class="col-span-6 sm:col-span-3">
             <label for="house_type" class="block text-sm font-medium leading-5 text-gray-700">尋找類型</label>
-            <select id="house_type" class="mt-1 block form-select w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5">
-              <option value=""></option>
-              <option value="appartment">公寓／大廈</option>
-              <option value="studio">套房</option>
-              <option value="house">透天</option>
-              <option value="land">建地</option>
-            </select>
+            <%= select f, :house_type, PreloadData.house_types, prompt: ["標的類型"], class: "mt-1 block form-select w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
           </div>
 
           <div class="col-span-6">
             <label for="size" class="block text-sm font-medium leading-5 text-gray-700">坪數</label>
             <div class="mt-1 grid gap-4 grid-cols-2">
-              <input id="min_size" class="form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="最小坪數">
-              <input id="max_size" class="form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="最大坪數">
+              <%= text_input f, :min_size, class: "form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5", placeholder: "最小坪數" %>
+              <%= text_input f, :max_size, class: "form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5", placeholder: "最大坪數" %>
             </div>
           </div>
 
           <div class="col-span-6 sm:col-span-6 lg:col-span-2">
-            <label for="room_count" class="block text-sm font-medium leading-5 text-gray-700">房間數量</label>
-            <input id="room_count" class="mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+            <label for="room_count" class="block text-sm font-medium leading-5 text-gray-700">房間數</label>
+            <%= number_input f, :room_count, class: "mt-1 form-input block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
           </div>
         </div>
 
-        <fieldset class="mt-8">
-          <legend class="text-base leading-6 font-medium text-gray-900">其他條件</legend>
-          <div class="mt-4 grid grid-flow-col auto-cols-auto">
-            <div class="flex items-start">
-              <div class="flex items-center h-5">
-                <input id="has_elevator" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+        <%= inputs_for f, :options, fn o_f -> %>
+          <fieldset class="mt-8">
+            <legend class="text-base leading-6 font-medium text-gray-900">其他條件</legend>
+            <div class="mt-4 grid grid-flow-col auto-cols-auto">
+              <div class="flex items-start">
+                <div class="flex items-center h-5">
+                  <%= checkbox o_f, :has_elevator, class: "form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" %>
+                </div>
+                <div class="ml-3 text-sm leading-5">
+                  <label for="has_elevator" class="font-medium text-gray-700">電梯</label>
+                </div>
               </div>
-              <div class="ml-3 text-sm leading-5">
-                <label for="has_elevator" class="font-medium text-gray-700">電梯</label>
+              <div class="flex items-start">
+                <div class="flex items-center h-5">
+                  <%= checkbox o_f, :has_parking, class: "form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" %>
+                </div>
+                <div class="ml-3 text-sm leading-5">
+                  <label for="has_parking" class="font-medium text-gray-700">含車位</label>
+                </div>
               </div>
             </div>
-            <div class="flex items-start">
-              <div class="flex items-center h-5">
-                <input id="has_parking" type="checkbox" class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
-              </div>
-              <div class="ml-3 text-sm leading-5">
-                <label for="has_parking" class="font-medium text-gray-700">含車位</label>
-              </div>
-            </div>
-          </div>
-        </fieldset>
+          </fieldset>
+        <% end %>
 
         <div class="mt-8">
           <div class="flex justify-between">

@@ -3,7 +3,7 @@ defmodule Estate.Repo.Migrations.CreatePosts do
 
   def change do
     create table(:posts) do
-      add :city, :string, null: false
+      add :county, :string, null: false
       add :area, :string, null: false
       add :budget, :integer, null: false
       add :house_type, :string, null: false

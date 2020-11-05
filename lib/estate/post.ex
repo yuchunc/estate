@@ -1,16 +1,26 @@
 defmodule Estate.Post do
   use Estate, :schema
 
+  alias Estate.Post
+
   schema "posts" do
-    field :city, :string
+    field :county, :string
     field :area, :string
     field :budget, :integer
     field :house_type, HouseTypeEnum
     field :min_size, :integer
     field :max_size, :integer
     field :room_count, :integer
+    embeds_one :options, Post.Options
+
+    belongs_to :user, Estate.Account.User, type: :binary_id
 
     timestamps()
+  end
+
+  def by_user_query(query, %{id: user_id}) do
+    query
+    |> where(user_id: ^user_id)
   end
 
   @doc false
