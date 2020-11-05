@@ -13,6 +13,7 @@ defmodule Estate.Post do
     field :room_count, :integer
     embeds_one :options, Post.Options
 
+    # State Related Fields
     field :published_at, :naive_datetime
     field :expired_at, :naive_datetime
     field :archived_at, :naive_datetime

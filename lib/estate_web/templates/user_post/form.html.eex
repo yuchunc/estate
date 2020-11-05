@@ -3,7 +3,10 @@
     <div class="md:col-span-1">
       <h3 class="text-lg font-medium leading-6 text-gray-900">找房條件</h3>
       <p class="mt-1 text-sm leading-5 text-gray-500">
-        請告訴我們你希望找什麼樣的房子?
+        請告訴我們你希望找什麼樣的房子！
+      </p>
+      <p class="text-sm leading-5 text-gray-500">
+        每則 PO 文有三個月的有效期喔
       </p>
     </div>
     <div class="mt-5 md:mt-0 md:col-span-2">

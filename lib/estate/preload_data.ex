@@ -24,10 +24,6 @@ defmodule Estate.PreloadData do
   end
 
   def house_types do
-    [ "公寓／大廈": "appartment",
-    "套房": "studio",
-    "透天": "house",
-    "建地": "land"
-    ]
+    ["公寓／大廈": "appartment", 套房: "studio", 透天: "house", 建地: "land"]
   end
 end
