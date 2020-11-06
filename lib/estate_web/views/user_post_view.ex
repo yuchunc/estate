@@ -2,7 +2,6 @@ defmodule EstateWeb.UserPostView do
   use EstateWeb, :view
 
   alias Estate.PreloadData
-  alias Estate.Utils
 
   @option_translation %{
     has_parking: "含車位",

@@ -36,7 +36,7 @@
 
           <div class="col-span-6 sm:col-span-3">
             <label for="house_type" class="block text-sm font-medium leading-5 text-gray-700">尋找類型</label>
-            <%= select f, :house_type, Utils.house_types_for_select, prompt: ["標的類型"], class: "mt-1 block form-select w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            <%= select f, :house_type, ViewUtils.house_types_for_select, prompt: ["標的類型"], class: "mt-1 block form-select w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
           </div>
 
           <div class="col-span-6">

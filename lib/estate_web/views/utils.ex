@@ -1,4 +1,4 @@
-defmodule Estate.Utils do
+defmodule EstateWeb.ViewUtils do
   def house_types do
     [appartment: "公寓／大廈", studio: "套房", house: "透天", land: "建地"]
   end

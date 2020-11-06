@@ -19,7 +19,7 @@
     </div>
     <div class="flex items-center mt-2 leading-4 justify-between">
       <div>
-        <div> <%= Keyword.get(Utils.house_types, @post.house_type) %> </div>
+        <div> <%= Keyword.get(ViewUtils.house_types, @post.house_type) %> </div>
         <div>
           <%= @post.min_size %>
           ～
@@ -29,7 +29,7 @@
         <div> <%= @post.room_count %> 房 </div>
       </div>
       <div>
-        <div> NT$ <%= Utils.integer_to_curreny(@post.budget) %> </div>
+        <div> NT$ <%= ViewUtils.integer_to_curreny(@post.budget) %> </div>
       </div>
     </div>
 
