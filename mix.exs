@@ -48,6 +48,7 @@ defmodule Estate.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:ecto_enum, "~> 1.4"},
       {:hashids, "~> 2.0"},
+      {:timex, "~> 3.5"},
       {:phx_gen_auth, "~> 0.5", only: [:dev], runtime: false}
     ]
   end
