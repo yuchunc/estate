@@ -31,7 +31,13 @@ defmodule Estate.Post do
   def published_query(query, utc_dt) do
     query
     |> where([p], is_nil(p.archived_at))
-    |> where([p], p.published_at < ^utc_dt)
+    |> where([p], p.published_at <= ^utc_dt and p.expired_at >= ^utc_dt)
+  end
+
+  def expired_query(query, utc_dt) do
+    query
+    |> where([p], not is_nil(p.archived_at))
+    |> where([p], p.expired_at <= ^utc_dt)
   end
 
   @doc false

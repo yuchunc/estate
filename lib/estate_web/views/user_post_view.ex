@@ -11,7 +11,7 @@ defmodule EstateWeb.UserPostView do
 
   def options_badge_text(%{__struct__: _} = opts) do
     opts
-    |> Map.from_struct
+    |> Map.from_struct()
     |> options_badge_text()
   end
 

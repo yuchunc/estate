@@ -10,8 +10,7 @@ use Mix.Config
 config :estate,
   ecto_repos: [Estate.Repo]
 
-config :estate, Estate.Repo,
-  migration_timestamps: [type: :utc_datetime_usec]
+config :estate, Estate.Repo, migration_timestamps: [type: :utc_datetime_usec]
 
 # Configures the endpoint
 config :estate, EstateWeb.Endpoint,

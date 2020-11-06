@@ -4,7 +4,7 @@
     <div class="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
 
       <!-- Cards -->
-      <a href="<%= Routes.user_post_path(@conn, :new) %>" >
+      <a href="<%= Routes.user_post_path(@conn, :new) %>" class="mt-2">
         <div class="bg-white shadow rounded-lg text-gray-700 font-medium text-sm flex justify-center items-center sm:h-full">
           <div class="p-5">
             <svg class="w-6 h-6 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -15,8 +15,6 @@
         </div>
       </a>
 
-      <% #require IEx; IEx.pry %>
-
       <%= render_many @posts, __MODULE__, "index_item.html", as: :post %>
 
       <!-- More cards... -->
@@ -25,5 +23,11 @@
 
   <div class="max-w-6xl mx-auto px-4 py-5 sm:px-6 sm:py-8 lg:px-8">
     <h2 class="text-lg leading-6 font-medium text-gray-900">過往需求</h2>
+    <div class="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+
+      <!-- Cards -->
+      <%= render_many @past_posts, __MODULE__, "index_item.html", as: :post %>
+    </div>
   </div>
+
 </div>
