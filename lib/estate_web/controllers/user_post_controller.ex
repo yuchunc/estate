@@ -32,7 +32,7 @@ defmodule EstateWeb.UserPostController do
     utc_expired_at = Timex.shift(utc_now, days: 90)
 
     chgst =
-      %Post{user_id: user.id, published_at: NaiveDateTime.utc_now()}
+      %Post{user_id: user.id, published_at: utc_now, expired_at: utc_expired_at}
       |> Post.creation_changeset(post_params)
 
     case Repo.insert(chgst) do

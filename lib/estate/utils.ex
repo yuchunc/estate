@@ -4,17 +4,16 @@ defmodule Estate.Utils do
   end
 
   def house_types_for_select do
-    house_types |> Enum.map(fn {k, v} -> {v, k} end)
+    house_types() |> Enum.map(fn {k, v} -> {v, k} end)
   end
 
   def integer_to_curreny(int) do
-    rev_str =
-      int
-      |> Integer.to_string()
-      |> String.reverse()
-      |> Stream.unfold(&String.split_at(&1, 3))
-      |> Enum.take_while(&(&1 != ""))
-      |> Enum.join(",")
-      |> String.reverse()
+    int
+    |> Integer.to_string()
+    |> String.reverse()
+    |> Stream.unfold(&String.split_at(&1, 3))
+    |> Enum.take_while(&(&1 != ""))
+    |> Enum.join(",")
+    |> String.reverse()
   end
 end
