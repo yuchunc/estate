@@ -11,8 +11,6 @@ defmodule EstateWeb.PageController do
     |> order_by(:published_at)
     |> limit(8)
     |> Repo.all
-    |> List.first
-    |> List.duplicate(7)
 
     render(conn, "app_landing.html", posts: posts)
   end
