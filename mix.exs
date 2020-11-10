@@ -49,6 +49,7 @@ defmodule Estate.MixProject do
       {:ecto_enum, "~> 1.4"},
       {:hashids, "~> 2.0"},
       {:timex, "~> 3.5"},
+      {:nimble_csv, "~> 1.0"},
       {:phx_gen_auth, "~> 0.5", only: [:dev], runtime: false}
     ]
   end
