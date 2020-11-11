@@ -14,7 +14,6 @@ defmodule Estate.LVRDatum do
     field :county, :string
     field :district, :string
     field :has_management, :boolean, default: false
-    field :land_area, :float
     field :main_usage, :string
     field :non_city_use, :string
     field :non_city_zone, :string
@@ -28,8 +27,9 @@ defmodule Estate.LVRDatum do
     field :transaction_building_area, :float
     field :transaction_date, :date
     field :transaction_floor, :string
+    field :transaction_land_area, :float
     field :transaction_ntd_amount, :integer
-    field :transaction_type, :string
+    field :subject_type, :string
 
     embeds_one :building_plan, LVRDatum.BuildingPlan, on_replace: :delete
     embeds_one :transaction_itinary, LVRDatum.TransactionItinary, on_replace: :delete
@@ -45,22 +45,21 @@ defmodule Estate.LVRDatum do
       :note,
       :county,
       :district,
-      :transaction_type,
+      :subject_type,
       :address,
-      :land_area,
       :city_zone,
       :non_city_zone,
       :non_city_use,
+      :transaction_floor,
       :transaction_date,
       :transaction_itinary,
-      :transaction_floor,
+      :transaction_land_area,
       :total_floor,
       :building_type,
       :main_usage,
       :building_main_material,
       :building_complete_date,
       :transaction_building_area,
-      :compartment,
       :has_management,
       :transaction_ntd_amount,
       :ntd_per_square_meter,

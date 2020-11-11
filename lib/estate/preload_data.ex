@@ -15,8 +15,8 @@ defmodule Estate.PreloadData do
 
     Registry.register(
       __MODULE__,
-      :counties_with_districs,
-      Enum.map(counties, &{&1, get_districs(&1)})
+      :counties_with_districts,
+      Enum.map(counties, &{&1, get_districts(&1)})
     )
 
     {:ok, pid}
@@ -28,8 +28,8 @@ defmodule Estate.PreloadData do
     counties
   end
 
-  def counties_with_districs do
-    [{_, res}] = Registry.lookup(__MODULE__, :counties_with_districs)
+  def counties_with_districts do
+    [{_, res}] = Registry.lookup(__MODULE__, :counties_with_districts)
 
     res
   end
@@ -40,7 +40,7 @@ defmodule Estate.PreloadData do
     |> Jason.decode!()
   end
 
-  defp get_districs(county) do
+  defp get_districts(county) do
     raw_counties()
     |> Enum.find(&(&1["CityName"] == county))
     |> Map.get("AreaList")
