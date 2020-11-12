@@ -6,11 +6,12 @@ defmodule EstateWeb.PageController do
   plug :put_layout, "marketing.html"
 
   def app_landing(conn, _params) do
-    posts = Post
-    |> Post.published_query(NaiveDateTime.utc_now)
-    |> order_by(:published_at)
-    |> limit(8)
-    |> Repo.all
+    posts =
+      Post
+      |> Post.published_query(NaiveDateTime.utc_now())
+      |> order_by(:published_at)
+      |> limit(8)
+      |> Repo.all()
 
     render(conn, "app_landing.html", posts: posts)
   end
