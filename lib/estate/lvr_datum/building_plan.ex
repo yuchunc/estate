@@ -6,7 +6,7 @@ defmodule Estate.LVRDatum.BuildingPlan do
     field :bedrooms, :integer
     field :halls, :integer
     field :bathrooms, :integer
-    field :compartment, :integer
+    field :compartment, :string
   end
 
   def changeset(bplan, attrs) do

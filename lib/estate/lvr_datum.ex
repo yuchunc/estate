@@ -10,13 +10,12 @@ defmodule Estate.LVRDatum do
     field :building_main_material, :string
     field :building_type, :string
     field :city_zone, :string
-    field :compartment, :integer
     field :county, :string
     field :district, :string
     field :has_management, :boolean, default: false
     field :main_usage, :string
-    field :non_city_use, :string
-    field :non_city_zone, :string
+    field :urban_usage, :string
+    field :urban_zone, :string
     field :note, :string
     field :ntd_per_square_meter, :integer
     field :parking_area, :float
@@ -46,13 +45,12 @@ defmodule Estate.LVRDatum do
       :county,
       :district,
       :subject_type,
-      :address,
+      :approximate_address,
       :city_zone,
-      :non_city_zone,
-      :non_city_use,
+      :urban_zone,
+      :urban_usage,
       :transaction_floor,
       :transaction_date,
-      :transaction_itinary,
       :transaction_land_area,
       :total_floor,
       :building_type,
@@ -68,5 +66,7 @@ defmodule Estate.LVRDatum do
       :parking_ntd_amount
     ])
     |> unique_constraint(:serial)
+    |> cast_embed(:building_plan)
+    |> cast_embed(:transaction_itinary)
   end
 end
